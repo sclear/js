@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        // 14个 中常用11个
+        let arr = new Array(1,21,1,11,4)
+        let arrT = new Array(7,8,9)
+
+        // concat 连接
+        // let newarr = arr.concat(arrT)
+        //     newarr = [...arr,...arrT]
+        // console.log(newarr)
+        
+        //join  数组连接
+        // let newarr = arr.join('-')
+        // console.log(newarr)
+
+        // pop  删除最后一位 并返回
+        // let newarr = arr.pop()
+        // console.log(newarr)
+        // console.log(arr)
+
+        //push  添加到数组末尾 并返回长度
+        // let newarr = arr.push(1,2)
+        // console.log(newarr)
+
+        //reverse 颠倒数组顺序
+        // let newarr = arr.reverse()
+        // console.log(newarr)
+
+        //shift 删除第一位 并返回
+        // let newarr = arr.shift()
+        // console.log(arr)
+
+        //slice 截取并返回  起始索引到末尾索引的前一位
+        // let newarr = arr.slice(1,2)
+        // console.log(newarr)
+
+        // sort   排序      实现排序(sort传入方法(x,y) x-y 升序 y-x降序)  (为了记忆 x>y x<y 也能达到目的)
+        // arr.sort()   普通排序(仅仅是首位数 不能达到想要的目的)
+        // console.log(arr)
+        // let newarr = arr.sort((x,y)=>{ 
+        //     return x > y
+        // })
+        // console.log(newarr)
+
+        // splice   该方法使用灵活 ( 索引, 数量 , 新添加(替换)值 )
+        // arr.splice(3)
+        // console.log(arr) 
+
+        // toString  数组转字符串 返回该字符串
+        // let newString = arr.toString()
+        // console.log(newString)
+        // let newarr = arr.reverse().join('')
+        // console.log(newarr)
+
+        //unshift 在开头添加一个或多个 并返回长度
+        arr.unshift(...arrT)
+        console.log(arr)
+
+    </script>
+</body>
+</html>
