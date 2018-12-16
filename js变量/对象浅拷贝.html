@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //1 for in循环
+        // 仅有一层
+
+        //2 object.assign({},obj,obj)  1 2 3 将会合并 {} 一般为空
+
+        let obj = {
+            name:1,
+            age:4
+        }
+        let newObj = {
+            sex:"boy",
+            age:6
+        }
+        let O = Object.assign({},obj,newObj)
+        console.log(O)
+
+    </script>
+</body>
+</html>
