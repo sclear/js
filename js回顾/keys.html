@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+
+        obj = {
+            name: '小李',
+            age: 15,
+            eat: '水果'
+        }
+        let arr = Object.keys(obj)
+        arr.forEach(key => {
+            
+            let value = this[key]
+            Object.defineProperty(this, key, {
+
+                get() {
+                    console.log('取值')
+                    return value
+                },
+
+
+                set(old) {
+                    console.log(old)
+                    value = old
+                    // return
+                }
+            })
+
+
+
+        });
+
+        // console.log( Object.keys(obj) )
+        // for ( let i in obj ) {
+        //     let
+        // }
+
+
+
+
+    </script>
+</body>
+
+</html>

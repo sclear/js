@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        function person(name,age) {
+            this.name = name;
+            this.age = age;
+        }
+        person.prototype.show = function (){
+            console.log('展示父类')
+        }
+
+        var p1 = new person('小李',18)
+
+
+
+        function son(eat,name,age) {
+            
+            person.call(this,name,age)
+            this.eat = eat;
+        }
+
+
+        //完美实现继承   干净的原型方法
+        son.prototype = Object.create(person.prototype)
+
+
+        //还原子类构造器
+        son.prototype.constructor = son;
+
+        son.prototype.say = function() {
+            console.log('吃饭')
+        }
+
+        var son1 = new son('水果','姓名',18);
+    
+    </script>
+</body>
+</html>
