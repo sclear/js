@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        class person {
+
+            constructor(name,age) {
+                this.name = name;
+                this.age = age;
+            }
+
+            show() {
+                console.log('show')
+            }
+
+
+            //ES6  的静态方法  类级别的能调用该方法  实例化无法调用该方法
+            static say (){
+                console.log('say')
+            }
+        }
+
+        class son extends person {
+
+            constructor(name,age,color) {
+                super(name,age);
+                this.color = color;
+            }
+
+            hi() {
+                console.log('hi')
+            }
+        }
+
+        let p1 = new person('小李',10)
+
+        let s1 = new son('小李',10,'black')
+    
+    
+    
+    </script>
+</body>
+</html>

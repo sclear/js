@@ -13,6 +13,16 @@
             this.name = name;
             this.age = age;
         }
+
+        //添加静态方法   es5与e6 具有一定的区别  相同点  person 本体能调用方法
+        //es5 子类无法调用父类的静态方法
+        //es6 子类拥有父类的静态方法 但是实例无法调用该方法
+        person.Hi = function () {
+            console.log('say hi')
+        }
+
+
+
         person.prototype.show = function (){
             console.log('展示父类')
         }
