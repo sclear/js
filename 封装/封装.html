@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        //IIFE + ES5 + 原型模拟类  实现数据挟持
+    
+        (
+            function() {
+
+                // es5 构造函数 + 原型  模式类
+
+                function person(name,age) {
+                    this.name = name;
+                    this.age = age;
+                    this.init();
+                }
+
+                person.prototype = {
+                    //找回构造器
+                    constructor: person,
+                    init() {
+                        // console.log(this)
+                        let arr = Object.keys(this)
+
+                        arr.forEach( key =>{
+                            let value = this[key];
+
+                            Object.defineProperty( this, key,{
+
+                                get() {
+                                    console.log('获取')
+                                    return value
+                                },
+
+                                set(newVal) {
+                                    console.log('设置')
+                                    value = newVal
+                                }
+
+                            } )
+
+                        })
+                    }
+                }
+
+                window.$per = person
+            }
+        )()
+        var person = new $per('小李',10)
+
+        // console.log(person)
+    
+    
+    </script>
+</body>
+</html>
