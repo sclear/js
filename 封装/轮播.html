@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .swiper {
+            width: 300px;
+            height: 90px;
+            background: bisque;
+            overflow: hidden;
+        }
+
+        .side {
+            width: 900px;
+            height: 90px;
+            /* background: blue; */
+            /* overflow: hidden; */
+        }
+
+        .side>div {
+            height: 90px;
+            width: 300px;
+            float: left;
+            transition: all .3s linear;
+        }
+
+        .content1 {
+            background: red;
+        }
+
+        .content2 {
+            background: gold;
+        }
+
+        .content3 {
+            background: green;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="swiper">
+        <div class="side">
+            <div class="content1 cont">1</div>
+            <div class="content2 cont">2</div>
+            <div class="content3 cont">3</div>
+        </div>
+    </div>
+
+    <div class="pre">left</div>
+    <div class="nex">right</div>
+
+
+    <script>
+        (function () {
+            function swiper(event,obj) {
+                this.wt = document.getElementsByClassName(event)[0].offsetWidth;
+                this.side = document.getElementsByClassName("side")[0];
+                this.cont = document.getElementsByClassName("cont");
+                this.pre = () => {
+                    this.side.insertBefore(this.cont[2], this.side.firstChild);
+                    this.cont[0].style.marginLeft = -this.wt+'px';
+
+                    setTimeout(() => {
+                        this.cont[0].style.marginLeft = 0
+                    }, 0);
+                }
+                this.nex = () => {
+                    this.cont[0].style.marginLeft = -this.wt+'px';
+                    setTimeout(() => {
+                        this.cont[0].style.marginLeft = "0px";
+                        this.side.appendChild(this.cont[0]);
+                    }, 300);
+                }
+                if (obj.autoplay === 'auto') {
+                    setInterval(() => {
+                        this.nex()
+                    }, 2000)
+                }
+                document.getElementsByClassName(obj.btn.pre)[0].addEventListener("click",()=>{this.pre()})
+                document.getElementsByClassName(obj.btn.nex)[0].addEventListener("click", ()=>{this.nex()})
+            }
+            window.swiper = swiper
+
+        })()
+        let swiper = new swiper('swiper',{
+            autoplay: 'auto',
+            btn: {
+                pre: 'pre',
+                nex: 'nex'
+            }
+        })
+
+    </script>
+</body>
+
+</html>
