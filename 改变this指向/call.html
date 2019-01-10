@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        let obj = {
+            name: 'Chao Jiang'
+        }
+        function person(name) {
+            this.name = name;
+        }
+        person.prototype = {
+            name: '11',
+            say() {
+
+                console.log(this)
+                console.log(this.name)
+            }
+        }
+
+        let P = new person('111')
+        P.say.call(obj)
+        P.say()
+
+
+
+        oB = {
+            name: 'Chao',
+            say: function () {
+                // obj.call(this,name)
+                console.log(this.name)
+            }
+        }
+
+        // oB.say.call(obj)
+
+        // oB.say()
+
+        // function log(a, b) {
+        //     console.log.call(console, a, b);
+        // };
+        // log(1);    //1
+        // log(1, 2);    //1 2
+        
+
+        // console.log(console)
+        //最简单的替代console.log的方法 当参数不定 不够完善
+        function log(a) {
+            console.log(a)
+        }
+        log(3)
+
+        //call 实现
+        function logs() {
+            console.log(this)
+            console.log.call(console,...arguments)
+            //]因为console内部机制，用window调用是不合法的，只能用console自己调用！
+            //误区
+            // console.log.apply(console, arguments)等同console.log(arguments)而不是console(arguments)
+        }
+        logs(1,2,3,4)
+
+        function b() {
+            a = 3
+            setTimeout( function(){
+                a = 1;
+            }.bind(this)(),2000 )
+            return a
+        }
+        console.log(b())
+
+        let ar = new Array('1')
+        console.log(Array.prototype)
+
+
+    </script>
+</body>
+
+</html>

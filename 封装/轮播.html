@@ -17,8 +17,6 @@
         .side {
             width: 900px;
             height: 90px;
-            /* background: blue; */
-            /* overflow: hidden; */
         }
 
         .side>div {
@@ -57,37 +55,45 @@
 
     <script>
         (function () {
-            function swiper(event,obj) {
+            function SWI(event, obj) {
                 this.wt = document.getElementsByClassName(event)[0].offsetWidth;
                 this.side = document.getElementsByClassName("side")[0];
                 this.cont = document.getElementsByClassName("cont");
-                this.pre = () => {
-                    this.side.insertBefore(this.cont[2], this.side.firstChild);
-                    this.cont[0].style.marginLeft = -this.wt+'px';
-
-                    setTimeout(() => {
-                        this.cont[0].style.marginLeft = 0
-                    }, 0);
-                }
-                this.nex = () => {
-                    this.cont[0].style.marginLeft = -this.wt+'px';
-                    setTimeout(() => {
-                        this.cont[0].style.marginLeft = "0px";
-                        this.side.appendChild(this.cont[0]);
-                    }, 300);
-                }
+                console.log(this.cont)
+                
                 if (obj.autoplay === 'auto') {
                     setInterval(() => {
                         this.nex()
                     }, 2000)
                 }
-                document.getElementsByClassName(obj.btn.pre)[0].addEventListener("click",()=>{this.pre()})
-                document.getElementsByClassName(obj.btn.nex)[0].addEventListener("click", ()=>{this.nex()})
+                document.getElementsByClassName(obj.btn.pre)[0].addEventListener("click", () => { console.log(this.pre); this.pre() })
+                document.getElementsByClassName(obj.btn.nex)[0].addEventListener("click", () => { this.nex() })
             }
-            window.swiper = swiper
+            SWI.prototype = {
+                 pre() {
+                    console.log(this)
+                    this.side.insertBefore(this.cont[2], this.side.firstChild);
+                    this.cont[0].style.marginLeft = -this.wt + 'px';
+
+                    setTimeout(() => {
+                        this.cont[0].style.marginLeft = 0
+                    }, 0);
+                },
+                nex: () => {
+                    this.cont[0].style.marginLeft = -this.wt + 'px';
+                    setTimeout(() => {
+                        this.cont[0].style.marginLeft = "0px";
+                        this.side.appendChild(this.cont[0]);
+                    }, 300);
+                }
+            }
+
+
+
+            window.swiper = SWI
 
         })()
-        let swiper = new swiper('swiper',{
+        let S = new swiper('swiper', {
             autoplay: 'auto',
             btn: {
                 pre: 'pre',

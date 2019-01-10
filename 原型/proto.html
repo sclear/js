@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- 一个对象的隐式原型指向构造该对象的构造函数的原型，这也保证了
+        实例能够访问在构造函数原型中定义的属性和方法。 -->
+
+    <!-- 除了和其他对象一样有上述proto属性之外，还有自己特有的属性——原
+            型属性（prototype），这个属性是一个指针，指向一个对象，这个对象的用途就
+            是包含所有实例共享的属性和方法（我们把这个对象叫做原型对象）。原型对象也
+            有一个属性，叫做constructor，这个属性包含了一个指针，指回原构造函数。 -->
+            <!-- 隐式原型指向构造该对象的构造函数的原型 -->
+            <!-- 因为function是特殊的对象，A.proto就指向了构造该函数的一个函数（随意起个名字 C）,C的proto就指向了和B对象一样的proto。。我自己都懵逼了。 -->
+    <script>
+
+        let fn = function () {
+            console.log('1')
+        }
+        let fn1 = new fn()
+
+        let obj = {}
+
+        console.log(fn1.__proto__=== fn.prototype)
+        console.log(fn.__proto__=== Function.prototype)
+        console.log(obj.__proto__)
+
+        console.log( fn.prototype === fn1.prototype) //false
+
+        console.log(Object.__proto__===Function.prototype)        //true    
+
+        console.log(Function.prototype.__proto__===Object.prototype)
+
+
+    </script>
+</body>
+
+</html>

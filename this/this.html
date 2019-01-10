@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <!-- this 的执行环境  简要划分 -->
+    <!-- 函数创建是无法确定this的指向 谁调用this指向谁是比较模糊的概念也是不够准确的 主要看执行上下文 -->
+    <script>
+        // 1：全局
+        // console.log(this)    window
+
+        // 2：函数内部  window调用
+        // function fn() {
+        //     console.log(this) //window
+        // }
+        // fn()
+
+        // 3：对象内
+        // let foo = {
+        //     fn: function() {
+        //         console.log(this)
+        //     }
+        // }
+        // foo.fn() // this指向调用对象foo
+        // let newFn = foo.fn
+        // newFn() //当赋值时 改this并没有指向 这个地方指向的是 window
+
+        // 4：构造函数  构造函数的this将指向 实例对象(本例中的p)
+        //    另加构造函数new发生了什么 
+        // 个人见解: 1 创建新对象  2 this指向该创建对象  3 执行构造函数所有方法  4 return改对象
+        // function person() {
+        //     console.log(this)
+        // }
+        // let p = new person()
+
+        // 5：定时器 一直保持指向window  （合适的时候使用箭头函数 指向父级作用域至关重要的 当然let _this=this 笨办法也是可以的）
+        // setTimeout(() => {
+        //     console.log(this)
+        // }, 0)
+        // foo = {
+        //     fn: function () {
+        //         setTimeout(function fn(){
+        //             console.log(this)
+        //         }, 0)
+        //     }
+        // }
+        // foo.fn()
+
+        // 6：箭头函数  this指向父级作用域
+        // fn = ()=>{
+        //     console.log(this)
+        // }
+        // fn()
+
+        // 7：  事件响应函数的this  ===> 指向事件源
+        // document.getElementById('btn').addEventListener('click', function () {
+        //     console.log(this);
+        // })
+
+    </script>
+</body>
+
+</html>
