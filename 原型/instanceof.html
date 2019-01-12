@@ -1,21 +1,26 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-        var a= 1;
-        var b = 2;
 
-        a = [b,b=a][0]
-        console.log(a)
-        // console.log(b)
-        console.log()
-    
+        // instanceof 内部实现原理 ( 即在原型链 一层一层 看 最终返回true or false )
+
+
+        //设 L instanceof R 
+        //通过判断
+        //L.__proto__.__proto__ ..... === R.prototype ？
+        //最终返回true or false
+
+
     </script>
 </body>
+
 </html>

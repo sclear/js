@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        //^ 开始 $结束
+        // 量词
+        let str = '18432342533'
+        
+        // first to us
+
+        //{n} 出现次数
+        let re = /^[1-9]-{0,1}[0-9]{0,1}\d{10}$/g
+        console.log( re.test(str) ) 
+        
+        // {n,} 至少n
+        // + 至少一次
+        //{0，1} 可有可无
+        
+    </script>
+</body>
+</html>

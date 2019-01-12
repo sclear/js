@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+    
+        // 1找数字
+        let str = 'AaaaaaAAAAA23aklf23d3k42lrhn23K4l5354j3lk5jektah3oi53lka6j4l6jlketj5j4li6jeltj5i36j';
+        // console.log( str.match(/\d+/g) )        // /\d+/g
+
+        let re = new RegExp('a','i');   //代表a本身
+        // console.log( str.search(re) )
+        // i 忽略 大小写
+        var gz = /a/i
+        // console.log(str.search(gz))
+        // + 若干
+        //转译
+        console.log( str.match(/\d/g) )
+
+
+        //replace
+        console.log( str.replace( /A/g,1 ) )
+
+        //过滤
+        let reg = /北京|A|3|2/g
+        console.log( str.replace(reg,'***') )
+
+        // [] 任取一个
+        let reg1 = /[3abc]k/gi
+        console.log( str.match(reg1) )
+
+        // ^ 排除
+        let reg2 = /[^a-zA-Z]+/g        //备注若干
+        console.log( str.match( reg2 ) )
+
+        // . 任意       警告（尽量少在正则中存在）
+        let reg3 = /.+/g
+        console.log( str.match(reg3) ) 
+       
+        //正则具备特性  贪婪!!! 会匹配尽可能长的字符串
+    
+    </script>
+</body>
+</html>

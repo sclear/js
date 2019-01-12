@@ -1,0 +1,30 @@
+.swiper {
+    width: 300px;
+    height: 90px;
+    background: bisque;
+    overflow: hidden;
+}
+
+.side {
+    width: 900px;
+    height: 90px;
+}
+
+.side>div {
+    height: 90px;
+    width: 300px;
+    float: left;
+    transition: all .3s linear;
+}
+
+.content1 {
+    background: red;
+}
+
+.content2 {
+    background: gold;
+}
+
+.content3 {
+    background: green;
+}

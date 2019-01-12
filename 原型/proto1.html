@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        // 所有构造器/函数(函数也是对象)的__proto__都指向Function.prototype，它是一个空函数（Empty function）
+        function Anima() {
+
+        }
+        let koa = new Anima;
+
+        console.log( Anima.__proto__.__proto__ === Object.prototype )
+
+        console.log(koa)
+        console.log(Anima.prototype)
+
+        console.log(Anima.__proto__ === Function.prototype)
+
+        console.log(Object.__proto__ === Function.prototype)
+
+        console.log(Object.__proto__)
+
+        let obj = {
+            name:1
+        }
+        console.log(String.__proto__ === Function.prototype)
+        console.log(obj.__proto__.__proto__ === Function.prototype)
+        // //是否是自身属性
+        // console.log( obj.hasOwnProperty('name') )
+        console.log(Object)
+        // console.log(1)
+
+        //多层三目运算
+        var c = 3;
+        var d = 0;
+        c === 0 ? d = 1 : c===1?d=2 : c===2? d=3 : d=4
+        console.log(d)
+
+        
+        
+        
+    </script>
+</body>
+</html>

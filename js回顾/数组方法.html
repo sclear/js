@@ -65,6 +65,33 @@
         arr.unshift(...arrT)
         console.log(arr)
 
+
+
+        
+        let obj = [
+            {
+                name:1,
+                sex:1
+            },
+            {
+                name:2,
+                sex:1
+            }
+        ]
+        // let newobj = obj.map( item=> ({ ...item,chec: true }) )
+        let chck = true;
+        let newobj = obj.map( item=> ({...item,chck}) )
+
+        console.log( newobj )
+
+        objs = {
+            naem:1,
+            se:3,
+            asd:5
+        }
+        var ob = { ...objs }
+        console.log( ({ ...objs,sex:6 }) )
+
     </script>
 </body>
 </html>
