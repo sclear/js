@@ -15,12 +15,22 @@
         // first to us
 
         //{n} 出现次数
-        let re = /^[1-9]-{0,1}[0-9]{0,1}\d{10}$/g
+        let re = /[1-9]-{0,1}[0-9]{0,1}\d{10}/g
         console.log( re.test(str) ) 
+        console.log( str.match( re ) )
         
         // {n,} 至少n
         // + 至少一次
-        //{0，1} 可有可无
+        //{0，1} 可有可无 === ?
+        // * 尽量不用 字母会匹配成功
+        // () 分区域
+        let re1 = /(-\d{0,8})?\d{3}/
+
+        console.log( re1.test( str ) )
+
+        // let re2 = //
+
+
         
     </script>
 </body>
