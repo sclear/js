@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body {
+            height: 2000px;
+        }
+    </style>
+</head>
+
+<body>
+    <img style="margin-top:900px" data-name='https://sponsor-static.segmentfault.com/b761068b86246dedd4ad790024736129.png' alt="">
+</body>
+<script>
+    class lazy {
+        constructor() {
+            window.addEventListener('scroll', () => { this.setImg() }, false)
+        }
+        setImg() {
+            this.Elements().forEach(el => {
+                if (!el.src) {
+                    if (el.getBoundingClientRect().top - this.elHeight() < -400) {
+                        el.src = el.dataset.name
+                    }
+                }
+            })
+        }
+        elHeight() {
+            return document.body.scrollTop || document.documentElement.scrollTop
+        }
+        Elements() {
+            return document.querySelectorAll('img')
+        }
+
+    }
+    new lazy()
+
+
+
+</script>
+
+</html>
