@@ -9,11 +9,22 @@
 <body>
     <script>
     
-        Function.prototype.bindy = function() {
+        Function.prototype.bindy = function(ctx,args) {
             return ()=> {
-                this.call( this, ...arguments )
+                this.call( ctx )
             }
         }
+        let obj = {
+            name: ' hq ',
+            by: function() {
+                console.log( this.name )
+            }
+        }
+        let newObj = {
+            name: ' jc '
+        }
+        obj.by.bindy( newObj )()
+
     
     </script>
 </body>
