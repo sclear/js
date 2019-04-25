@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // 递归
+        let ary = [
+            { name: 1 },
+            { sex: 2 }
+        ]
+        const deepClone = (obj) => {
+            const deepObj = Array.isArray(obj) ? [] : {}
+            for (let i in obj) {
+                const current = obj[i]
+                deepObj[i] = typeof (current) === 'object' ? deepClone(current) : obj[i]
+            }
+            return deepObj
+        }
+        let ar = deepClone(ary)
+
+        ary[0].name = 555
+        console.log(ary)
+        console.log(ar)
+
+        // JSON  { 丢失原型 undefined function ... }
+        let newary = JSON.parse( JSON.stringify( ary ) )
+
+    </script>
+</body>
+
+</html>
