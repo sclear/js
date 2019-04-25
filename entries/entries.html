@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+    
+        let ary = ['name','sex']
+        console.log( ary.entries().next() )
+        for( [i, v] of ary.entries() ) {
+            console.log(i)
+            console.log(v)
+        }
+
+        let ar = [1,2,3,4,56,6]
+        console.log( Math.max(...ar) )
+        console.log( Math.min(...ar) )
+
+    </script>
+</body>
+</html>
