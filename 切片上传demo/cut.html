@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <input type="file" onchange="up(this)">
+    <script>
+        class uploadCut {
+            constructor(obj) {
+                this.size = obj.size || 1024    // 每次切片大小
+                this.suc = obj.success          // 成功回调
+                this.err = obj.fail             // 失败回调
+                this.num = null                 // 上传次数
+                this.foo = 0                    // 某次
+                this.file = null                // 文件流
+            }
+            // 存在上传文件 提示中断 存储文件流 文件上传次数
+            upload(ev) {
+                if (this.num !== null || this.foo !== 0 || this.file !== null) {
+                    alert('当前有文件正在上传请稍后...')
+                }
+                this.num = Math.ceil(ev.files[0].size / this.size)
+                this.file = ev.files[0]
+                if (this.num) this.send()
+            }
+            // 切片事件 结束初始化构造器
+            send() {
+                if (this.num > 0 && this.num > this.foo) {
+                    this.foo++
+                    this.sendCut(this.file.slice((this.foo - 1) * this.size, (this.foo - 1) * this.size + this.size))
+                    if (this.foo === this.num) {
+                        this.destroy()
+                    }
+                }
+            }
+            // 上传逻辑在此方法 成功失败调用suc or err
+            // file 上传文件
+            sendCut(file) {
+                // ajax成功调用suc  失败err
+                // if( true ) {
+                //     this.suc ? this.suc(this.foo, this.num) : ''
+                // } 
+                // else {
+                //     this.err ? this.err(this.foo, this.num) : ''
+                // }
+                // 仅用于测试该逻辑
+                setTimeout(() => {
+                    this.suc ? this.suc(this.foo, this.num) : ''
+                    this.send()
+                }, 1000)
+            }
+            // 初始化构造器
+            destroy() {
+                this.num = null  // 上传次数
+                this.foo = 0     // 某次
+                this.file = null
+            }
+        }
+
+        // size 每次切片大小
+        // callback 每次上传成功后
+        let upImg = new uploadCut({
+            size: 1024,
+            success: function (nowIndex, count) {
+                // {nowIndex}当前成功第几份  {conunt}总数 (可用于进度判断)
+                console.log(nowIndex, count)
+            },
+            fail: function(err) {
+                // 失败信息
+            }
+        })
+
+        function up(ev) {
+            upImg.upload(ev)
+        }
+
+
+    </script>
+</body>
+
+</html>

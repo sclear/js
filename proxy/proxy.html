@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        "use strict"
+        let data = {
+            name: 'Billy Bob',
+            age: 15
+        };
+
+
+        let api = new Proxy(data, {
+            get(target, key, proxy) {
+                console.log(target)
+                console.log(key)
+                console.log(proxy)
+                console.log(target === data)    //true
+                console.log( target === api )
+                console.log( data === api )
+                return Reflect.get(target, key, proxy);
+                
+            },
+            set(target, key, value, proxy) {
+                target[key] = value;
+                console.log(target)
+            }
+        
+        }); 
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+</head>
+<body>
+    <div id="el" name='el' class="el">
+        <div class="js">jc</div>
+        <div class="jc"> 蒋超 </div>
+        <div>蒋超</div>
+    </div>
+
+
+    <script>
+        // ==========  获取div #el .el节点  document.getElementByName()   ========
+        let el = document.getElementById('el')
+        let els = document.querySelector('.jc')
+        let js = document.querySelector('.js')
+        // let el = document.getElementsByClassName('el')
+        // let el = document.getElementsByTagName('div')
+        // let el = document.getElementsByName('el')
+        // let el = document.querySelector('.el')
+        // let el = document.querySelectorAll('.el')
+
+        // ==========   获取/设置元素的属性值：
+        // let foo = el.getAttribute('class')
+        // el.setAttribute(attributeName,attributeValue) 
+
+        // ==========  创建node
+        // let foo = document.createAttribute("class");
+        let foo = document.createElement("h3") 
+        foo.innerText = '233'
+
+        // =========  添加节点
+        // el.appendChild(foo);   //往element内部最后面添加一个节点，参数是节点类型
+        //              new node   before el
+        // el.insertBefore(foo, els)    //某el 内部 xx之前添加
+
+        // =========== 删除node
+        // element.removeChild(Node)
+        // el.removeChild(els)      //parent remove child
+
+        // 常用属性
+        // 获取父节点
+        // els.parentNode
+
+        // 获取子节点
+        // el.childNodes  // 返回节点带文本
+        // el.children    // 仅返回节点
+        // console.log( el.lastElementChild )   // el 不带文本
+        // console.log( el.firstElementChild )  // el 不带文本
+        // el.firstChild
+        // el.lastChild 
+        // console.log( els.nextElementSibling )   // el 不带文本
+        // console.log( els.previousElementSibling )// el 不带文本
+        // els.nextSibling.nextSibling  下一节点
+        // els.previousSibling          上一节点
+
+        //============ 克隆节点 cloneNode
+        // console.log( el.cloneNode(false) )
+        
+        //============ 替换节点 replaceChild  ( newnode oldnode )
+        // el.replaceChild( foo, els )
+    </script>
+</body>
+</html>
