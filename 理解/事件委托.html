@@ -8,14 +8,40 @@
 </head>
 <body>
     <div>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
-        <li></li>
+        <li>234234</li>
+        <li>234234</li>
+        <li>234234</li>
+        <li>23423</li>
+        <li>234234</li>
     </div>
     <script>
-    
+
+        $ = el => document.querySelector('div')
+        $a = el => document.querySelectorAll('li')
+        // 事件委托
+        // $('div').onclick= function() {
+        //     let e = window.event
+        //     document.querySelectorAll('li').forEach( (v, i)=> {
+        //         if( e.target === v ) {
+        //             alert(i + 1)
+        //         }
+        //     } )
+        // }
+
+        // 遍历事件
+        // $a('li').forEach( (v, i)=> {
+        //     // console.log(i)
+        //     v.onclick = function() {
+        //         alert(i)
+        //     }
+        // } )
+        
+        // let局部作用域 IIFE局部作用域
+        for( var i = 0;i < $a('li').length; i++ ) {
+            (function(b) {
+                $a('li')[b].onclick = function() { console.log(b+1) }
+            })(i)
+        }
     
     
     </script>
