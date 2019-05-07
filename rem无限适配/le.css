@@ -1,0 +1,21 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.element {
+  width: 100%;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.element .item {
+  width: 2rem;
+  height: 2rem;
+  background: black;
+  margin: 0.13333333rem;
+}
+.element .none {
+  width: 2rem;
+  margin: 0.13333333rem;
+  height: 0;
+}

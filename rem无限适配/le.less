@@ -1,0 +1,20 @@
+.rem(@name,@px) {
+    @{name}: unit(@px / 75, rem);
+ }
+ .element{
+    width:100%;
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-around;
+    .item{
+        .rem(width, 150);
+        .rem(height, 150);
+        background: black;
+        .rem(margin, 10);
+    }
+    .none{
+        .rem(width, 150);
+        .rem(margin, 10);
+        height: 0;     
+    }
+ }
