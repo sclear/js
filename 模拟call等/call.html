@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        Function.prototype.newCall = function(content) {
+            content.newFn = this;
+            content.newFn()
+            delete content.newFn
+            return content
+        }
+
+        let obj = {
+            name: 'jiangchao'
+        }
+        function printName() {
+            console.log(this.name)
+        }
+        printName.newCall(obj)
+
+
+
+    </script>
+</body>
+</html>
