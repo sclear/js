@@ -1,19 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
 </head>
+
 <body>
     <script>
-
-        Function.prototype.newCall = function(content) {
-            content.newFn = this;
-            content.newFn()
-            delete content.newFn
-            return content
-        }
 
         let obj = {
             name: 'jiangchao'
@@ -21,10 +16,41 @@
         function printName() {
             console.log(this.name)
         }
+
+        // call
+        Function.prototype.newCall = function (context, ...rest) {
+            // ...避免context对象存在方法名 可使用随机数
+            context.newFn = this;
+            let resulte = context.newFn(...rest)
+            delete context.newFn
+            return resulte
+        }
+
+        // apply
+        Function.prototype.newApply = function (context, rest = []) {
+            context.newFn = this;
+            let resulte = context.newFn(...rest)
+            delete context.newFn
+            return resulte
+        }
+
+
         printName.newCall(obj)
+
+        // Bind
+        Function.prototype.newBind = function (context, ...rest) {
+            return function () {
+                context.newFn = this;
+                let resulte = context.newFn(...rest)
+                delete context.newFn
+                return resulte
+            }
+        }
+        let a = printName.newBind(obj)()
 
 
 
     </script>
 </body>
+
 </html>
