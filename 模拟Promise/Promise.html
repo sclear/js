@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+
+        // function promise(r) {
+        //     return new Promise( (rs, rj)=> {
+        //         rs(r)
+        //     } )
+        // }
+        // promise(1)
+        // .then(res=> {
+        //     console.log(res)
+        //     promise(3)
+        //     .then(a=> {
+        //         console.log(a)
+        //     })
+        //     return promise(2)
+        // })
+        // .then(res=> {
+        //     console.log(res)
+        // })
+        // promise()
+        // .then(res=> {
+        //     console.log(res)
+        //     return 2
+        // })
+        // .then(res=> {
+        //     console.log(res)
+        //     return 3
+        // })
+        // .then(res=> {
+        //     console.log(res)
+        // })
+        setTimeout(()=> {
+            console.log(1)
+            setTimeout(res=> {
+                console.log(2)
+            },0)
+        },0)
+        setTimeout(res=> {
+            console.log(3)
+        },0)
+        
+
+    </script>
+</body>
+</html>
