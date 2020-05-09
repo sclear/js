@@ -27,7 +27,22 @@
     
 
     function n(a) {
-        const a = 2
         console.log(a)
     }
     n()
+
+
+    ' Generator '
+    function* Gen() {
+        yield setTimeout(() => {
+            console.log('yield 1')
+        }, 1001);
+        yield setTimeout(() => {
+            console.log('yield 2')
+        }, 1000);
+        console.log(1)
+    }
+    // Gen.next()
+    let generator = Gen()
+    generator.next()
+    // generator.next()
