@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="UTF-8" />
+  <title>HTML/SVG Example</title>
+</head>
+
+<body>
+
+    <svg viewBox="0 0 10 10"
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink">
+    <defs>
+        <!-- 定义一个线性渐变，外部的所有元素都可以引用这个效果 -->
+        <linearGradient id="myGradient"
+            gradientTransform="rotate(90)">
+            <stop offset="20%"
+                stop-color="gold" />
+            <stop offset="90%"
+                stop-color="red" />
+        </linearGradient>
+    </defs>
+
+    <!-- 在defs的外部通过使用url(defs中的id值) 来引用defs中定义的图形 -->
+    <circle id="myCircle"
+        cx="0"
+        cy="0"
+        r="5"
+        fill="url('#myGradient')" />
+</svg>
+</body>
+</html>
