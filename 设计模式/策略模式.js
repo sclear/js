@@ -67,7 +67,7 @@ let saleStrategy = function sale1() {
 }()
 
 //例: 元旦节活动 会员满100减60 非会员满100减40
-saleStrategy.add('R_100-60', ()=> parseInt(price / 100) * 30)
-saleStrategy.add('R_100-60', ()=> parseInt(price / 100) * 30)
+saleStrategy.add('R_100-60', ()=> parseInt(price / 100) * 60)
+saleStrategy.add('R_100-40', ()=> parseInt(price / 100) * 40)
 
 ' 策略模式使得复杂多变的if else场景变得具有拓展性和良好的可维护性 '
