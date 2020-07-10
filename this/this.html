@@ -12,16 +12,16 @@
     <!-- this 的执行环境  简要划分 -->
     <!-- 函数创建是无法确定this的指向 谁调用this指向谁是比较模糊的概念也是不够准确的 主要看执行上下文 -->
     <script>
-        // 1：全局
+'1：全局'
         // console.log(this)    window
 
-        // 2：函数内部  window调用
+ '2：函数内部  window调用'
         // function fn() {
         //     console.log(this) //window
         // }
         // fn()
 
-        // 3：对象内
+'3：对象内'
         // let foo = {
         //     fn: function() {
         //         console.log(this)
@@ -31,7 +31,7 @@
         // let newFn = foo.fn
         // newFn() //当赋值时 改this并没有指向 这个地方指向的是 window
 
-        // 4：构造函数  构造函数的this将指向 实例对象(本例中的p)
+'4：构造函数  构造函数的this将指向 实例对象(本例中的p)'
         //    另加构造函数new发生了什么 
         // 个人见解: 1 创建新对象  2 this指向该创建对象  3 执行构造函数所有方法  4 return改对象
         // function person() {
@@ -39,7 +39,7 @@
         // }
         // let p = new person()
 
-        // 5：定时器 一直保持指向window  （合适的时候使用箭头函数 指向父级作用域至关重要的 当然let _this=this 笨办法也是可以的）
+'5：定时器 一直保持指向window  （合适的时候使用箭头函数 指向父级作用域至关重要的 当然let _this=this 笨办法也是可以的）'
         // setTimeout(() => {
         //     console.log(this)
         // }, 0)
@@ -52,16 +52,62 @@
         // }
         // foo.fn()
 
-        // 6：箭头函数  this指向父级作用域
+ '6：箭头函数  this指向父级作用域'
         // fn = ()=>{
         //     console.log(this)
         // }
         // fn()
 
-        // 7：  事件响应函数的this  ===> 指向事件源
+'7： 事件响应函数的this  ===> 指向事件源'
         // document.getElementById('btn').addEventListener('click', function () {
         //     console.log(this);
         // })
+
+
+'8:  特别情况this突然丢失了=> undefined, 对我们判断this的主要影响';
+        ' 或许会有同学们在写react或者在使用类丢失了this没有深究,为什么会丢失 下面就是解析 '
+        ' 对象中的实验 '
+        // 下面会用到一个词儿 "作用域调用函数" 就是直接调用function fn() {}; fn() 没有调用者fn.call
+        const animal = {
+            say() {
+                console.log(this)
+                function printName() {
+                    console.log(this)
+                }
+                printName()
+            }
+        }
+        animal.say() 
+        // say this=> Man   ||   printName this=> Window
+        // 同学们的理解: say中被animal调用 => animal   没毛病
+        //              printName中属于作用域内调用函数 => Window 没毛病
+
+        ' 类中的实验 '
+        class person {
+            say() {
+                console.log(this)
+                function printName() {
+                    console.log(this)
+                }
+                printName()
+            }
+        }
+        const Man = new person()
+        Man.say();
+        // say this=>  Man  ||   printName this=> undefined
+        // 当然 上述情况 很多老司机会相信console的log输出 Man Window
+        // 结果可能稍微有点偏离了日常认知,为什么this丢失,写react的同学是不是也有遇到this丢失的问题,丢失为什么丢失
+        // 解惑: 某ES6入门篇的介绍,ES6默认使用了什么模式? 严格模式
+        //       严格模式会导致什么? 作用域直接调用函数方式this丢失;ok 举栗
+        function printThis() {
+            'use strict'
+            console.log(this)
+        }
+        printThis() // undefined; 严格模式下的作用域直接调用函数this丢失
+        
+
+
+        
 
     </script>
 </body>
