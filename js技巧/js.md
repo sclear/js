@@ -32,6 +32,9 @@ STACK中也是地址与值作绑定
 | ------- | ----- | -------------------- |
 | 0012CCG |  23   |  myNumber,newNumber  |
 
+当`newNumber = newNumber + 1`是不是`myNumber也会加1呢`  
+当`newNumber + 1`后`newNumber`会重新分配地址
+
 
 # STACK AND HEAP
 ---
