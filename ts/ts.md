@@ -79,3 +79,53 @@ ts.config可配置严格的检查`null`或者`undefined`
         return objs[vKey]
     }   // 此时约束了T是object的子类型,K必须得是T的子类型
 ```
+
+# 泛型类
+---
+
+```typescript
+    class GetMin<T>{
+        arr:T[]=[];
+        add(ele:T){
+            this.arr.push(ele);
+        }
+        min():T{
+            var min=this.arr[0];
+            this.arr.forEach(function (value) {
+                if(value<min){
+                    min=value;
+                }
+            });
+            return min;
+        }
+    }
+    var gm1= new  GetMin<number>();
+```
+
+# 泛型方法
+---
+
+```typescript
+    interface Ifn {
+        <T>(o: T): T
+    }
+
+    let fn: Ifn = function<T>(o: T): T {
+        return o
+    }
+    fn<string>('2')
+
+
+
+    interface IGeneric<T> {
+        (arg: T): void
+    }
+
+    let fns: IGeneric<string> = function(val: string) {
+
+    }
+    
+   let fns1: IGeneric<string> = function<T>(val: T) {
+
+   }
+```
