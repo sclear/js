@@ -1,0 +1,40 @@
+// 定义nickName
+@fui: 'fuis';
+
+@fuiname: ~'@{fui}-success';
+.@{fuiName} {
+    font-size: 12px;
+}
+
+// mixins
+.alert{
+    color: #fff;
+}
+.use-alert{
+    .alert;
+    // OR
+    .alert();
+}
+
+
+// functional Class, will delete
+.upload() {
+    color: #fff;
+}
+.upload {
+    color: #fff;
+}
+
+.use-upload{
+    .upload();
+}
+
+// maps Class, will delete
+.mixins{
+    .item{
+        color: #fff;
+    }
+}
+.use-mixin{
+    .mixins.item()
+}
