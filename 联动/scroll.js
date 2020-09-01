@@ -99,7 +99,8 @@ const Ithrottle = function (fn, wait = 50) {
       let step = ()=> {
         currentTop += speed;
         if (currentTop <= top) {
-          this.element.scrollTo(0, currentTop);
+          // this.element.scrollTo(0, currentTop);
+          this.element.scrollTop = currentTop
           requestId = window.requestAnimationFrame(step);
         } else {
           window.cancelAnimationFrame(requestId);
@@ -118,7 +119,8 @@ const Ithrottle = function (fn, wait = 50) {
       let step = ()=> {
         currentTop -= speed;
         if (currentTop >= top) {
-          this.element.scrollTo(0, currentTop);
+          // this.element.scrollTo(0, currentTop);
+          this.element.scrollTop = currentTop
           requestId = window.requestAnimationFrame(step);
         } else {
           window.cancelAnimationFrame(requestId);
