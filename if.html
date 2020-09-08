@@ -4,18 +4,142 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
     <title>Document</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+
+        .wrap {
+            height: 400px;
+            width: 300px;
+            background: gray;
+            overflow-y: scroll;
+            position: relative;
+        }
+
+        .parent {
+            position: relative;
+        }
+
+        .child {
+            position: absolute;
+            left: 0;
+            top: 10px;
+            /* right: 0; */
+            width: 100px;
+            background: red;
+        }
+    </style>
 </head>
 
 <body>
-    <div></div>
+    <div class="wrap">
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>2</div>
+        <div>1</div>
+        <div>1</div>
+        <div>1</div>
+        <div>
+            wrap
+            <div class="parent">
+                <div>2</div>
+                <div>2</div>
+                <div>2</div>
+                <div class="child">child</div>
+            </div>
+        </div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+        <div>not</div>
+    </div>
     <script>
-        let art = "<p>&lt;p&gt;　　商品房经营者不得收取任何未标明的费用，不得使用不规范的价格标示，误导购房者。&lt;/p&gt;</p>"
-        document.querySelector('div').innerHTML = art
-
-
-
+        function getStyle(obj, attr = 'position') {
+            if (obj.currentStyle) {
+                return obj.currentStyle[attr];
+            } else {
+                return document.defaultView.getComputedStyle(obj, null)[attr];
+            }
+        }
+        function calcScrollTop(wrapName = '.wrap', name = '.child') {
+            let wrap = document.querySelector(wrapName)
+                child = document.querySelector(name),
+                parent = child,
+                __scrollTop__ = 0;
+            while (parent !== wrap && parent !== document.body) {
+                parent = parent.parentNode
+                if (['relative', 'absolute'].includes(getStyle(parent))) {
+                    let ofsTop = child.offsetTop
+                    child = parent
+                    __scrollTop__ += ofsTop
+                }
+            }
+            wrap.scrollTop = __scrollTop__
+        }
     </script>
 </body>
 
