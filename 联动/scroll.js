@@ -127,22 +127,14 @@ class Bscroll {
    * @param { target } 目标节点className id tagName ...
    */
   getElementHeight(target) {
-    let child = document.querySelector(target),
-        parent = child,
-        __scrollTop__ = 0;
-    if(!child) throw new Error('Bscroll: target is not found')
-    while (parent !== this.element && parent !== document.body) {
-      parent = parent.parentNode
-      
-      if (['relative', 'absolute'].includes(getStyle(parent))) {
-        let ofsTop = child.offsetTop
-        child = parent
-        __scrollTop__ += ofsTop
-      }
-
+    let child = document.querySelector(target)
+    let __scrollTop__, offsetParents = [];
+    let pointer = child.offsetParent;
+    while (pointer && this.element !== pointer && this.element.contains(pointer)) {
+      offsetParents.push(pointer)
+      pointer = pointer.offsetParent
     }
-
-    if(parent === document.body) throw new Error('Bscroll: target is not in Wrap')
+    __scrollTop__ = child.offsetTop + offsetParents.reduce((pre, curr)=> pre + curr.offsetTop, 0)
 
     return __scrollTop__
   }
