@@ -35,7 +35,7 @@ function getStyle(element, attr = 'position') {
 
 /**
  * 
- * @param { warpElement } 容器Element
+ * @param { wrapElement } 容器Element
  * @param { scrollInfo  } 记录字节点信息,已便移动定位Class
  * @param { moving      } 移动状态, 不希望存在移动事件并行
  * 
@@ -57,8 +57,8 @@ function getStyle(element, attr = 'position') {
  *    定位到联动菜单
  */
 class Bscroll {
-  constructor(warpElement) {
-    this.element = warpElement
+  constructor(wrapElement) {
+    this.element = wrapElement
     this.scrollInfo = []
     this.init()
     this.moving = false
@@ -101,7 +101,7 @@ class Bscroll {
    * 计算相对容器的目标高度
    * @param { className } 目标的className, 必须存在于INfo
    */
-  calcRelativeWarp(className) {
+  calcRelativeWrap(className) {
     const isClassName = this.scrollInfo.some(item=> item.className === className)
     if(!isClassName) return 0
     let scrollHeight = 0;
@@ -153,7 +153,7 @@ class Bscroll {
   scrollTo(className) {
     if(this.moving) return
 
-    let h = this.calcRelativeWarp(className)
+    let h = this.calcRelativeWrap(className)
 
     if(h > this.getScrollHeight())  this.moveDown(h)
     else this.moveUp(h)
